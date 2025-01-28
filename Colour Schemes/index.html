@@ -1,0 +1,198 @@
+<html>
+
+<head>
+  <style>
+    table {
+      margin: 20px;
+      border-collapse: collapse;
+      border: 1px solid #4d4d4d;
+    }
+
+    th,
+    td {
+      vertical-align: middle;
+      text-align: center;
+      border: 1px solid #4d4d4d;
+    }
+
+    tr td.title {
+      font-weight: bold;
+      text-align: center;
+      padding-right: 10px;
+    }
+
+    td {
+      padding: 5px;
+    }
+
+    td[data-swatch] .name {
+      font-weight: bold;
+      padding-top: 5px;
+    }
+
+    td[data-swatch] .swatch {
+      display: inline-block;
+      width: 80px;
+      height: 40px;
+      background-color: var(--swatch-color);
+      border: 1px solid #4d4d4d;
+    }
+  </style>
+</head>
+
+<body>
+
+</body>
+
+<table>
+  <tbody>
+    <tr>
+      <td data-swatch="#0f7feb"data-name="Blue"></td>
+      <td data-swatch="#3266b7" data-name="Dark Blue"></td>
+      <td data-swatch="#85b4f5" data-name="Light Blue"></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td data-swatch="#4d4d4d" data-name="Dark Grey"></td>
+      <td data-swatch="#f1f1f1" data-name="Light Grey"></td>
+    </tr>
+    <tr>
+      <td data-swatch="#58c778" data-name="Success"></td>
+      <td data-swatch="#f38b37" data-name="Warning"></td>
+      <td data-swatch="#ff3a3a" data-name="Danger"></td>
+    </tr>
+    <tr>
+      <td data-swatch="#f8ed56" data-name="Emphasis"></td>
+      <td data-swatch="#f38b37" data-name="CAP HPI"></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Full</th>
+      <th>Full Shadow</th>
+      <th>Light</th>
+      <th>Light Shadow</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="title" >Week</td>
+      <td data-swatch="0f7feb"></td>
+      <td data-swatch="10508d"></td>
+      <td data-swatch="ebf4fe"></td>
+      <td data-swatch="b3bbc2"></td>
+    </tr>
+    <tr>
+      <td class="title">Month</td>
+      <td data-swatch="9065bc"></td>
+      <td data-swatch="4f346a"></td>
+      <td data-swatch="f1ebf6"></td>
+      <td data-swatch="bbb2c4"></td>
+    </tr>
+    <tr>
+      <td class="title">Quarter</td>
+      <td data-swatch="65b3bc"></td>
+      <td data-swatch="3b767d"></td>
+      <td data-swatch="ebf5f6"></td>
+      <td data-swatch="b9c8c9"></td>
+    </tr>
+    <tr>
+      <td class="title">Year</td>
+      <td data-swatch="db5757"></td>
+      <td data-swatch="9b3131"></td>
+      <td data-swatch="fff2f2"></td>
+      <td data-swatch="d6c0c0"></td>
+    </tr>
+    <tr>
+      <td class="title">Spotlight</td>
+      <td data-swatch="e8a35e"></td>
+      <td data-swatch="9b6631"></td>
+      <td data-swatch="efd5bb"></td>
+      <td data-swatch="d1b89e"></td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <thead>
+    <tr>
+      <th>Fuel</th>
+      <th>Background</th>
+      <th>Foreground</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="title">Petrol</td>
+      <td data-swatch="58c778"></td>
+      <td data-swatch="4d4d4d"></td>
+    </tr>
+    <tr>
+      <td class="title">Diesel</td>
+      <td data-swatch="4d4d4d"></td>
+      <td data-swatch="ffffff"></td>
+    </tr>
+    <tr>
+      <td class="title">Hybrid</td>
+      <td data-swatch="f38b37"></td>
+      <td data-swatch="ffffff"></td>
+    </tr>
+    <tr>
+      <td class="title">Electric</td>
+      <td data-swatch="f8ed56"></td>
+      <td data-swatch="ffffff"></td>
+    </tr>
+  </tbody>
+</table>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"
+  integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script>
+  $(document).ready(() => {
+    function getColours(value) {
+      hex = `${value}`;
+
+      if (!hex.startsWith("#")) {
+        hex = `#${hex}`;
+      }
+
+      const r = parseInt(hex.substring(1, 3), 16);
+      const g = parseInt(hex.substring(3, 5), 16);
+      const b = parseInt(hex.substring(5, 7), 16);
+
+      return {
+        hex: hex,
+        r, g, b,
+        rgb: `${r},${g},${b}`,
+      };
+    }
+
+    function parseHex(value) {
+      return parseInt(value, 16);
+    }
+
+    const cells = $("td[data-swatch]");
+
+    cells.each((index, elem) => {
+      elem = $(elem).empty();
+
+      const { hex, rgb } = getColours(elem.data("swatch"));
+      const name = elem.data("name");
+
+      if (name) {
+        $("<div>").addClass("name").text(name).appendTo(elem);
+      }
+      $("<div>").addClass("swatch").css("--swatch-color", hex).appendTo(elem);
+      $("<div>").addClass("rgb").text(rgb).appendTo(elem);
+      $("<div>").addClass("hex").text(hex).appendTo(elem);
+    });
+  });
+
+</script>
+
+</html>
