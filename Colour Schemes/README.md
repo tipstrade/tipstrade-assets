@@ -15,6 +15,20 @@
 | Danger (Red) | 255,58,58 | #ff3a3a |
 | CAP HPI  (Dark Orange) | 243,139,55 | #f38b37 |
 
+### Vehicle Status
+
+| Name | RGB | Hex |
+| ---- | --- | --- |
+| Buy Now | 130,241,165  | #82f1a5  |
+| Sale Price | 189,226,97   | #bde261  |
+| Today     | 255,252,182  | #fffeb6  |
+| Unopened  | 204,175,242  | #ccaff2  |
+| Physical  | 187,228,255  | #bbe4ff  |
+| Dealt     | 250,198,156  | #fac69c  |
+| Underwrite| 255,255,255  | #ffffff  |
+| Sold      | 252,149,175  | #fc95af  |
+| Removed   | 133,133,255  | #8585ff  |
+
 ## Social Media 
 
 ### Report Type or Period
