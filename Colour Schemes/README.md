@@ -1,5 +1,7 @@
 # Colour Schemes
 
+This page is for reference only. For up-to-date usage, see the [Brand Toolkit](https://tipstrade.net/brand/colour).
+
 ## Website Colours
 
 | Name | RGB | Hex | Notes |
